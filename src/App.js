@@ -14,9 +14,14 @@ function App() {
     });
   }
  
-  const printDataref = () => {
+  const printDataRef = () => {
     console.log(dataRef);
     console.log(dataRef.current.value);
+  }
+
+  const printFirestoreDocs = async () => {
+    const objectArray = await handlers.firestoreRead();
+    console.log(objectArray);
   }
 
   return (
@@ -25,7 +30,8 @@ function App() {
       <input type="text" ref={dataRef} />
       <button type="submit" >Submit</button>
     </form>
-    <button onClick={printDataref}>Print dataRef</button>
+    <button onClick={printDataRef}>Print dataRef</button>
+    <button onClick={printFirestoreDocs}>print Firestore Entries</button>
    </div>   
   )
 }
